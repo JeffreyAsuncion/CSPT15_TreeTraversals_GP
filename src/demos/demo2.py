@@ -15,9 +15,12 @@ Output:
    13   9
 """
 
+# in pre_order the 5 is the root
 pre_order = [5, 7, 22, 13, 9]
 
 in_order = [7, 5, 13, 22, 9]
+
+"""Basically re engineer a binary tree"""
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -48,6 +51,7 @@ def build_tree(preorder, inorder):
         # and set an index variable
         index = index_map[root_value]
 
+        ### RECURSION
         # now we can do the recursion
         # increment the pre order index
         preorder_index += 1
@@ -67,7 +71,6 @@ def build_tree(preorder, inorder):
     # create a pre order index of zero
     preorder_index = 0
     
-
     # build a dictionary of value -> its index
     index_map = {}
 
@@ -76,11 +79,12 @@ def build_tree(preorder, inorder):
         index_map[value] = index
 
     # return helper()
+    print(index_map)
+    return  helper()
 
 
 
-
-# tree1 = build_tree(pre_order, in_order)
+tree1 = build_tree(pre_order, in_order)
 
 
 print("Done!")
