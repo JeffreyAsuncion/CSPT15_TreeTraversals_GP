@@ -10,6 +10,7 @@ class TreeNode:
 # define some helper function that we will use inside our traversal code
 def inorder_helper(root, res):
     if root is None:
+        # you have reached the leaf
         return
     inorder_helper(root.left, res)
     # in order
@@ -86,6 +87,8 @@ def breadth_first_traversal(root):
             queue.append(node.right)
 
     return result
+
+
 
 
 def depth_first_traversal(root):

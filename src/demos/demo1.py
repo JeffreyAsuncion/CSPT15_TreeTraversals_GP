@@ -26,41 +26,47 @@ def inorder_traversal(root):
             helper(root.left, result)
             # in order thing!
             # append roots value to the result list
-            result.append(root.val, result)
+            result.append(root.val)
             # call the helper on the right of the root, passing the result list along
-            helper(root.right)
+            helper(root.right,result)
     
     result = []
     helper(root, result)
     
     return result
 
+
 # iterative solution
-def inorder_traversal(root):
+def inorder_traversal_iter(root):
     # hold the result
     result = []
     # make a stack
     stack = []
 
     # iterate
-    while True:
+    while root or stack:
         # while the root node is not none
         while root: 
             # append the root to the stack
             stack.append(root)
             # traverse to the left of the root
             root = root.left
+            print("Looking Left")
 
             # if there is no stack
             if not stack:
                 # return the result
                 return result
-            # pop the stack on to a node variable
-            node = stack.pop()
-            # append the nodes value to the result list
-            result.append(node.val)
-            # traverse to the right of the node
-            root = root.right
+
+        # pop the stack on to a node variable
+        root = stack.pop()
+        #  append the nodes value to the result list
+        result.append(root.val)
+        # traverse to the right of the node
+        root = root.right
+        print("Looking Right")
+        
+    return result
 
 """Allision solution"""
 # def inorder_traversal(root):
@@ -78,3 +84,4 @@ t1.right = TreeNode(1)
 t1.right.left = TreeNode(5)
 
 print(inorder_traversal(t1))
+print(inorder_traversal_iter(t1))
